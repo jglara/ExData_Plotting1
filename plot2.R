@@ -3,7 +3,7 @@ download.file(url, destfile= "./house_hold_power.zip", method = "curl")
 unzip("./house_hold_power.zip")
 power_data <- read.csv(file="./household_power_consumption.txt", sep=";", na.strings ="?")
 
-filtered_power_data <- power_data [as.Date(power_data$Date, "%d/%m/%Y") >= "2007-02-01" &  as.Date(power_data$Date, "%d/%m/%Y") <= "2007-02-02",]
+filtered_power_data <- power_data [power_data$Date == "1/2/2007" | power_data$Date == "2/2/2007",]
 
 #plot 2
 plot(filtered_power_data$Global_active_power, type="l", main="", ylab = "Global Active Power (kilowats)", xlab="", axes= FALSE)

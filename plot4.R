@@ -3,8 +3,7 @@ download.file(url, destfile= "./house_hold_power.zip", method = "curl")
 unzip("./house_hold_power.zip")
 power_data <- read.csv(file="./household_power_consumption.txt", sep=";", na.strings ="?")
 
-filtered_power_data <- power_data [as.Date(power_data$Date, "%d/%m/%Y") >= "2007-02-01" &  as.Date(power_data$Date, "%d/%m/%Y") <= "2007-02-02",]
-
+filtered_power_data <- power_data [power_data$Date == "1/2/2007" | power_data$Date == "2/2/2007",]
 
 #plot4
 par(mfrow = c(2,2))
@@ -28,7 +27,7 @@ with(filtered_power_data, {
   axis(2, at=c(0,10,20,30))
   box()
   
-  plot(Global_reactive_power, type="l", ylab="Voltage", xlab="datetime", axes= FALSE)
+  plot(Global_reactive_power, type="l", ylab="Global reactive Power", xlab="datetime", axes= FALSE)
   axis(1, at=c(1,1440,2880), lab=c("Thu", "Fri", "Sat"))
   axis(2, at=c(0.0,0.1,0.2,0.3,0.4,0.5))
   box()
